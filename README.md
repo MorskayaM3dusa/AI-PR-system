@@ -41,8 +41,8 @@ ChatGPT: "Рекомендую: 1. Zapier, 2. Make, 3. IFTTT"
 
 ### Клонирование репозитория
 ```bash
-git clone https://github.com/yourusername/ai-pr-system.git
-cd ai-pr-system
+git clone https://github.com/MorskayaM3dusa/AI-PR-system
+cd AI-PR-system
 ```
 ### Установка зависимостей
 ```bash
