@@ -246,7 +246,7 @@ def is_comparison_mention_fixed(context: str) -> bool:
     return False
 
 def process_all_responses():
-    """Исправленная обработка всех ответов"""
+    """Обработка всех ответов"""
     db = SessionLocal()
     responses = db.query(LLMResponse).order_by(LLMResponse.id).all()
     deleted_count = db.query(ProductMention).delete()

@@ -226,14 +226,14 @@ def generate_sources_report():
     report = analyze_all_responses()
     
     print("\n" + "="*60)
-    print("📚 ОТЧЁТ ОБ АВТОРИТЕТНЫХ ИСТОЧНИКАХ")
+    print("ОТЧЁТ ОБ АВТОРИТЕТНЫХ ИСТОЧНИКАХ")
     print("="*60)
     
-    print(f"\n📊 Общая статистика:")
+    print(f"\nОбщая статистика:")
     print(f"   Всего найдено уникальных источников: {report['total_sources_found']}")
     print(f"   Проанализировано ответов LLM: {report.get('total_responses', 'N/A')}")
     
-    print(f"\n🏆 Топ-10 самых упоминаемых источников (в ответах LLM):")
+    print(f"\nТоп-10 самых упоминаемых источников (в ответах LLM):")
     for i, (source, count) in enumerate(report['top_sources'], 1):
         print(f"   {i}. {source}: {count} упоминаний")
     
@@ -243,10 +243,10 @@ def generate_sources_report():
         print(f"   • {source_type}: {unique_count} уникальных источников")
     
     if report['blind_spots']:
-        print(f"\n⚠️  ОБНАРУЖЕНЫ СЛЕПЫЕ ПЯТНА ({len(report['blind_spots'])}):")
+        print(f"\nОБНАРУЖЕНЫ СЛЕПЫЕ ПЯТНА ({len(report['blind_spots'])}):")
         print(f"   (Источники, где упоминаются конкуренты, но не {config.TARGET_PRODUCT})")
         
-        for i, spot in enumerate(report['blind_spots'][:5], 1):  # Показываем первые 5
+        for i, spot in enumerate(report['blind_spots'][:5], 1):
             print(f"\n   {i}. Источник: {spot['source_name']}")
             print(f"      Тип источника: {spot['source_type']}")
             competitors = spot['competitors_mentioned'][:3]
@@ -256,9 +256,8 @@ def generate_sources_report():
                     print(f"      (+ еще {len(spot['competitors_mentioned']) - 3} конкурентов)")
             print(f"      Контекст: {spot['context_ru']}")
     else:
-        print(f"\n✅ Слепых пятен не обнаружено")
+        print(f"\nСлепых пятен не обнаружено")
     
-    # Сохраняем отчёт в файл (данные на английском, но метаданные на русском)
     report_with_metadata = {
         'report_title': 'Анализ авторитетных источников для ИИ-ассистентов',
         'target_product': config.TARGET_PRODUCT,
@@ -269,7 +268,7 @@ def generate_sources_report():
     with open('sources_report.json', 'w', encoding='utf-8') as f:
         json.dump(report_with_metadata, f, ensure_ascii=False, indent=2)
     
-    print(f"\n💾 Отчёт сохранён в файл: sources_report.json")
+    print(f"\nОтчёт сохранён в файл: sources_report.json")
     print("="*60)
 
 if __name__ == "__main__":
